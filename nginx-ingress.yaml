@@ -1,0 +1,10 @@
+
+# This file contains custom values (overrides) for the official NGINX Ingress Controller Helm Chart.
+# The base chart is sourced from its official repository: https://kubernetes.github.io/ingress-nginx
+# Here, im defining specific values that differ from the chart's defaults,
+# customizing the Ingress Controller's deployment for my lab environment.
+controller:
+  service:
+    # I've changed the service type from LoadBalancer (which is the default) to NodePort.
+    # This is to expose the Ingress Controller on a specific port on the Kubernetes cluster nodes
+    type: NodePor
