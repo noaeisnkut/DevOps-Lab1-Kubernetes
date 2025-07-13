@@ -7,4 +7,4 @@ controller:
   service:
     # I've changed the service type from LoadBalancer (which is the default) to NodePort.
     # This is to expose the Ingress Controller on a specific port on the Kubernetes cluster nodes
-    type: NodePor
+    type: NodePort
