@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ui-app-deployment
+  namespace: tbd
+  labels:
+    app: my-ui-app-python
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-ui-app-python
+  template:
+    metadata:
+      labels:
+        app: my-ui-app-python
+    spec:
+      containers:
+        - name: my-ui-app-container
+          image: noa10203040/my-ui-app-python:v1.0
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-ui-app-service
+  namespace: tbd
+  labels:
+    app: my-ui-app-python
+spec:
+  selector:
+    app: my-ui-app-python
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP
